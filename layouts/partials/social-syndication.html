@@ -1,0 +1,23 @@
+{{ with .Params.syndication }}
+  <section>
+    <span>
+      Got a comment? A question? More of a comment than a question?
+    </span>
+    <span>
+      Talk to me about this page on:
+      {{ range $service, $url := . }} 
+        {{ if ne $service "twitter" }}
+          <a
+            href="{{ $url }}"
+            class="u-syndication fa fa-{{ $service }}"
+            title="{{ title $service }}"
+            rel="syndication"
+            aria-label="{{ title $service }}"
+          >
+            <span class="sr-only">{{ $service }}</span>
+          </a>
+        {{ end }}
+      {{ end }}
+    </span>
+  </section>
+{{ end }}

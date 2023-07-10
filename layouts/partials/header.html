@@ -1,19 +1,12 @@
-<section data-pagefind-ignore>
-  <div>
-    <a href="/">{{ .Site.Title }}</a>
-
-    <nav>
-      <ul>
-        {{ range .Site.Menus.main }}
-          <li>
-            <a href="{{ .URL }}" title="{{ .Title }}">{{ .Title }}</a>
-          </li>
-        {{ end }}
-      </ul>
-    </nav>
-  </div>
+<header data-pagefind-ignore>
+  <nav>
+    <a href="/" class="link-home">{{ .Site.Title }}</a>
+    {{ range .Site.Menus.main }}
+      <a href="{{ .URL }}" title="{{ .Title }}">{{ .Title }}</a>
+    {{ end }}
+  </nav>
   <div id="search"></div>
-</section>
+</header>
 <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
 <script src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
 <script>

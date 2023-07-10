@@ -1,0 +1,56 @@
+// Global styles
+
+:root {
+  --prose-font: Atkinson Hyperlegible, -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  --code-font: Fantasque Sans Mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+  --prose-width: 64rem;
+  --prose-height: 18px;
+}
+
+body {
+  font-family: var(--prose-font);
+  font-size: var(--prose-height);
+}
+
+tt, code, pre {
+  font-family: var(--code-font);
+}
+
+// Site Header
+
+body>header {
+  nav {
+    display: flex;
+
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      padding: 1rem;
+
+      &.link-home {
+        flex-grow: 1;
+      }
+    }
+  }
+}
+
+// Page content
+
+main {
+  max-inline-size: var(--prose-width);
+  margin-inline: auto;
+}
+
+// Site footer
+
+body > footer {
+  max-inline-size: var(--prose-width);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+// Misc
+img {
+  max-inline-size: 100%;
+}

@@ -1,0 +1,34 @@
+<section>
+  <section>
+    {{ if .card }}
+      <div>
+        {{- $image := $.Resources.GetMatch .card -}}
+        {{ if $image }}
+          {{ $resized := $image.Resize "600x webp" }}
+          <a href="{{ .url }}">
+            <img class="u-photo" src="{{ $resized.RelPermalink }}">
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+    <div>
+      <h2>
+        <a class="u-bookmark-of h-cite" href="{{ .url }}">
+          {{ .name }}
+        </a>
+      </h2>
+
+      {{ with .description }}
+        <blockquote>
+          {{ . }}
+        </blockquote>
+      {{ end }}
+    </div>
+
+    {{ with .site }}
+      <footer class="text-small align-right">
+        <p>From <a href="{{ . | safeURL }}">{{ . }}</a></p>
+      </footer>
+    {{ end }}
+  </section>
+</section>

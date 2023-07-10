@@ -1,0 +1,14 @@
+{{- $cover_image := .Params.cover_image -}}
+
+{{ with $cover_image }}
+  {{- $image := $.Resources.GetMatch .path -}}
+  {{- $caption := .caption -}}
+  {{- with $image -}}
+    {{- $resized := .Fill "400x212 webp" -}}
+    <div>
+      <img src="{{ $resized.RelPermalink }}" class="u-photo">
+    </div>
+  {{- else -}}
+    <div class="alert alert-warning">No image '<tt>{{ .path }}</tt>'</div>
+  {{- end -}}
+{{ end }}

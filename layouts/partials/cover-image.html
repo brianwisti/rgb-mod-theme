@@ -1,0 +1,19 @@
+{{- $cover_image := .Page.Params.cover_image -}}
+
+{{ with $cover_image }}
+  {{- $image := $.Resources.GetMatch .path -}}
+  {{- $caption := .caption -}}
+  {{- with $image -}}
+    {{- $resized := .Resize "1280x" -}}
+    <div>
+      <figure>
+        <img src="{{ $resized.RelPermalink }}" class="u-photo">
+        {{ with $cover_image.caption }}
+          <figcaption>{{ . | markdownify }}</figcaption>
+        {{ end }}
+      </figure>
+    </div>
+  {{- else -}}
+    <div>No image '<tt>{{ .path }}</tt>'</div>
+  {{- end -}}
+{{ end }}
