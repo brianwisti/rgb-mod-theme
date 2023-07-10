@@ -1,0 +1,7 @@
+{{ $category := .Get 0 }}
+
+{{ with $category }}
+    <a class="p-category" href="/categories/{{ . }}">{{ . }}</a>
+{{ else }}
+    {{  errorf "missing value for param 'category': %s" .Position }}
+{{  end }}

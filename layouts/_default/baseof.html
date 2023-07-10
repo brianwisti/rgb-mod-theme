@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  {{- partial "head.html" . -}}
+  <body>
+    {{- partial "header.html" . -}}
+    <main>
+      {{ partial "breadcrumb-trail.html" . }}
+      {{- block "main" . }}{{- end }}
+    </main>
+    {{- partial "footer.html" . -}}
+    {{- with .Site.Params.PlausibleDomain -}}
+      <script defer data-domain="{{ . }}" src="https://plausible.io/js/script.js"></script>
+    {{- end }}
+  </body>
+</html>

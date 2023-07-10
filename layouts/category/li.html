@@ -1,0 +1,18 @@
+{{/* category li */}}
+
+{{- $cover_image := .Params.cover_image -}}
+
+<section>
+  {{ partial "card-cover" . }}
+  <section>
+    <header>
+      <h1><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h1>
+    </header>
+    <div>
+      {{ with .Page.Params.description }}{{ . }}{{ end }}
+    </div>
+    <footer>
+      {{ with .Pages }} ({{ . | len }} pages) {{ end }}
+    </footer>
+  </section>
+</section>

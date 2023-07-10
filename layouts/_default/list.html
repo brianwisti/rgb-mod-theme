@@ -1,0 +1,17 @@
+{{ define "main" }}
+  <section>
+    {{ with .Page.Title }}
+      <header>
+        <h1>{{ . }}</h1>
+      </header>
+    {{ end }}
+
+    {{ .Content }}
+
+    <section data-pagefind-ignore>
+      {{ range .Pages }}
+        {{ .Render "li" }}
+      {{ end }}
+    </section>
+  </section>
+{{ end }}

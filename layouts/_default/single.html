@@ -1,0 +1,26 @@
+{{ define "main" }}
+  <article>
+    <header>
+      <div>
+        <div>
+          <h1>{{ .Page.Title }}</h1>
+        </div>
+        {{ with .Page.Params.description }}
+          <div>{{ . }}</div>
+        {{ end }}
+        {{ if .Page.Params.lastmod -}}
+          <footer>
+            <dl>
+              {{ partial "updated-meta" . }}
+            </dl>
+          </footer>
+        {{- end }}
+      </div>
+      {{ partial "cover-image.html" . }}
+      {{ partial "social-syndication.html" . }}
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

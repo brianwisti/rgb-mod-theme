@@ -1,0 +1,19 @@
+<dl>
+{{ with .Params.updated_at }}
+  <dt>Updated</dt>
+  <dd>
+    <time class="dt-updated" datetime="{{ dateFormat $.Site.Params.TimestampForm . }}">
+      {{ time.Format $.Site.Params.DateForm . }}
+    </time>
+  </dd>
+{{ else }}
+  {{ with .Params.updated }}
+    <dt>Updated</dt>
+    <dd>
+      <time class="dt-updated" datetime="{{ dateFormat $.Site.Params.TimestampForm . }}">
+        {{ dateFormat $.Site.Params.DateForm . }}
+      </time>
+    </dd>
+  {{ end }}
+{{ end }}
+</dl>

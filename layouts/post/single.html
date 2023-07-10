@@ -1,0 +1,31 @@
+{{ define "main" }}
+  {{ $typePages := where .Site.RegularPages "Type" .Type }}
+  <div>
+    <section>
+      <div>
+      {{ with $typePages.Next . }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <footer>{{ .Date.Format $.Site.Params.DateForm }}</footer>
+      {{ else }}
+        <p><em>You are reading the newest entry</em></p>
+      {{ end }}
+    </section>
+    <section>
+      <div>
+        {{ with $typePages.Prev . }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <footer>{{ .Date.Format $.Site.Params.DateForm }}</footer>
+        {{ else }}
+        <p><em>You are reading the oldest entry</em></p>
+        {{ end }}
+      </div>
+    </section>
+  </div>
+  <article>
+    {{ .Render "article-header" }}
+
+    <section>
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

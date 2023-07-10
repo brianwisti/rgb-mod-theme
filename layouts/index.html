@@ -1,0 +1,54 @@
+{{ define "main" }}
+
+<section>
+    <header>
+      <a class="u-url u-uid" href="https://randomgeekery.org">
+        <span class="p-name">Brian Wisti</span>
+      </a>
+      ( <a class="u-pronoun" href="https://pronoun.is/he">he / him / his</a> )
+    </header>
+    <div>
+      <section>
+        <img class="u-photo" src="/img/avatar-thumbnail.jpg" alt="Brian Wisti">
+        <section>
+          {{ range .Site.Params.author.social }}
+            <a rel="me" href="{{ .href }}"
+              title="{{ .service }}"
+              aria-label="{{ .service }}">
+              <span class="sr-only">{{ .service }}</span>
+            </a>
+          {{ end }}
+        </section>
+      </section>
+      <section>
+        <p class="p-note">
+          Caffeinated, occasionally crafty geek near <span class="p-locality">Seattle</span>.
+          I like <span class="p-category">FOSS</span>,
+          <a class="p-category" href="/tags/drawing">drawing</a>,
+          and <a class="p-category" href="/tags/knitting">yarn</a>.
+        </p>
+
+        <section>
+          <p>
+          Did you know you can <em>buy</em> some of those drawings on shirts, mugs, stickers, tapestries, etc? It's true!
+          </p>
+
+          <p>
+            You can find my designs on <a href="https://randomgeekery.threadless.com">Threadless</a> and
+            <a href="https://www.designbyhumans.com/shop/randomgeek/">Design By Humans</a>
+          </p>
+        </section>
+         {{ .Content }}
+       </section>
+     </div>
+   </section>
+
+   <section>
+    {{ range
+      first 4 (sort
+        (where .Site.RegularPages "Type" "in" .Site.Params.mainSections)
+        "Date" "desc") }}
+        {{ .Render "li" }}
+    {{- end -}}
+  </section>
+{{ end }}

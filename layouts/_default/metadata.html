@@ -1,0 +1,38 @@
+<dl>
+  {{- with .Date -}}
+    <dt>Posted</dt>
+    <dd>
+      <time class="dt-published" datetime="{{ .Format $.Site.Params.TimestampForm }}">
+        {{ .Format $.Site.Params.DateForm }}
+      </time>
+    </dd>
+  {{- end -}}
+
+{{ with .Params.updated_at }}
+  <dt>Updated</dt>
+  <dd>
+    yo?
+    <time class="dt-updated" datetime="{{ dateFormat $.Site.Params.TimestampForm . }}">
+      {{ time.Format $.Site.Params.DateForm . }}
+    </time>
+  </dd>
+{{ else }}
+  {{ with .Params.updated }}
+    <dt>Updated</dt>
+    <dd>
+      <time class="dt-updated" datetime="{{ dateFormat $.Site.Params.TimestampForm . }}">
+        {{ dateFormat $.Site.Params.DateForm . }}
+      </time>
+    </dd>
+  {{ end }}
+{{ end }}
+</dl>
+
+<section class="meta">
+  {{ with .Params.category }}
+      <a class="p-category" href="/category/{{ . | urlize }}">{{ . }}</a>
+  {{ end }}
+  {{ range .Params.tags }}
+    <a class="p-category" href="/tags/{{ . | urlize }}">#{{ . }}</a>
+  {{ end }}
+</section>

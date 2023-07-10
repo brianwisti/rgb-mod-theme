@@ -1,0 +1,36 @@
+{{ define "main" }}
+  <aside class="warning">
+    If you're thinking about bookmarking or linking this page, maybe go for
+    the <a href="/config/">main config</a> instead. I try, but down here
+    in the details it's a bit of a mess. Individual files get renamed. Lots.
+  </aside>
+  <article>
+    <header>
+      <div>
+        <div>
+          <h1>{{ .Page.Title }}</h1>
+        </div>
+        {{ with .Page.Params.description }}
+          <div>{{ . }}</div>
+        {{ end }}
+        {{ with .Page.Params.updated_at -}}
+          <footer>
+            <dl>
+              <dt>Updated</dt>
+              <dd>
+                <time
+                    class="dt-updated"
+                    datetime="{{ dateFormat $.Site.Params.TimestampForm . }}"
+                    >{{ dateFormat $.Site.Params.DateForm . }}</time>
+              </dd>
+          </footer>
+        {{- end }}
+      </div>
+      {{ partial "cover-image.html" . }}
+      {{ partial "social-syndication.html" . }}
+    </header>
+    <section>
+      {{ .Content }}
+    </section>
+  </article>
+{{ end }}

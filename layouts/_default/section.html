@@ -1,0 +1,25 @@
+{{ define "main" }}
+  <section>
+    {{ with .Page.Title }}
+      <header>
+        <h1>{{ . }}</h1>
+      </header>
+    {{ end }}
+
+    {{ .Content }}
+
+    <section>
+      {{ with .Sections }}
+        {{ range . }}
+          {{ .Render "li" }}
+        {{ end }}
+      {{ end }}
+
+      {{ with .RegularPages }}
+        {{ range sort . ".Params.title" "desc" }}
+          {{ .Render "li" }}
+        {{ end }}
+      {{ end }}
+    </section>
+  </section>
+{{ end }}

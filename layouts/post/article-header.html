@@ -1,0 +1,21 @@
+<header>
+  <div>
+    <div>
+      <h1>{{ .Page.Title }}</h1>
+    </div>
+    {{ with .Page.Params.description }}
+      <h2>{{ . }}</h2>
+    {{ end }}
+    {{ partial "cover-image.html" . }}
+    {{ with .Page.Params.cite }}
+      {{ partial "cite-card.html" . }}
+    {{ end }}
+    <footer>
+      {{ partial "article-metadata.html" . }}
+      {{ range .Params.series }}
+        <p>Series: <a href="/series/{{ . | urlize }}">{{ . }}</a></p>
+      {{ end }}
+      {{ partial "social-syndication.html" . }}
+    </footer>
+  </div>
+</header>
